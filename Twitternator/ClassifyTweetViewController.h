@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ClassifyTweetViewController.h
 //  Twitternator
 //
 //  Created by Bernardo Santana on 1/30/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ClassifyTweetViewController : UIViewController
 
 @end
-
