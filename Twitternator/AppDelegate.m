@@ -18,7 +18,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [Fabric with:@[TwitterKit]];
+   self.window.tintColor = [UIColor whiteColor];
+    
     return YES;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "SWRevealViewController.h"
 
 @interface HomeViewController ()
 
@@ -16,7 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self menuNavigationLayout];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +26,31 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)menuNavigationLayout
+{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:85/255.0 green:172/255.0 blue:238/255.0 alpha:1.0];
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    
+    SWRevealViewController *revealController = [self revealViewController];
+    //Swipe gesture of SWRVC overriding other gestures
+    //[revealController panGestureRecognizer];
+    [revealController tapGestureRecognizer];
+    
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
+                                                                         style:[self buttonStyle] target:revealController
+                                                                        action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem = revealButtonItem;
+    
 }
-*/
+
+-(UIBarButtonItemStyle)buttonStyle
+{
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+    return UIBarButtonItemStylePlain;
+#else
+    return UIBarButtonItemStyleBordered;
+#endif
+    
+}
 
 @end

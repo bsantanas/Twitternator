@@ -8,8 +8,9 @@
 
 #import "CoreDataTableViewController.h"
 
-@interface TweetsCDTVC : CoreDataTableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CoolTweetsCDTVC : CoreDataTableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
+@property (strong, nonatomic) NSString *hola;
 
 @end
