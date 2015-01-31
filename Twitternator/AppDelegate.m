@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <TwitterKit/TwitterKit.h>
 
 @interface AppDelegate ()
 
@@ -16,7 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [Fabric with:@[TwitterKit]];
     return YES;
 }
 
@@ -107,6 +109,11 @@
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
+}
+
++ (AppDelegate *)sharedAppDelegate
+{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 #pragma mark - Core Data Saving support

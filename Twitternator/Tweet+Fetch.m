@@ -17,7 +17,7 @@
     
     NSString *unique = [tweetDictionary valueForKey:@"tweetID"];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
-    request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", unique];
+    request.predicate = [NSPredicate predicateWithFormat:@"tweetID = %@", unique];
     
     NSError *error;
     NSArray *matches = [context executeFetchRequest:request error:&error];
@@ -31,8 +31,8 @@
                                               inManagedObjectContext:context];
         tweet.tweetID =unique;
         tweet.text = [tweetDictionary valueForKey:@"text"];
-        NSDate *date;// =
-        tweet.createdAt = date;
+        //NSDate *date;// =
+        //tweet.createdAt = date;
         tweet.whoTweeted = [Author authorWithName:[tweetDictionary valueForKey:@"user"] inManagedObjectContext:context];
         
     }
@@ -40,9 +40,12 @@
     return tweet;
 }
 
-+(void)loadTweetsFromArray:(NSArray *)array intoManagedObjectContext:(NSManagedObjectContext *)context
++(void)loadTweetsFromArray:(NSArray *)tweetArray intoManagedObjectContext:(NSManagedObjectContext *)context
 {
-    
+    for (NSDictionary *tweetDictionary in tweetArray) {
+        [self tweetFromDictionary:tweetDictionary inManagedObjectContext:context];
+    }
+
 }
 
 @end

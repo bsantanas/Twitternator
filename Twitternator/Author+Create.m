@@ -15,7 +15,7 @@
     Author *author = nil;
     
     if ([name length]){
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Author"];
         request.predicate = [NSPredicate predicateWithFormat:@"name = %@", name];
         
         NSError *error;

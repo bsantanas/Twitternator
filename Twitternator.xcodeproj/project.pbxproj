@@ -15,7 +15,6 @@
 		649DF3621A7C6718004DC7A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649DF3601A7C6718004DC7A2 /* LaunchScreen.xib */; };
 		649DF36E1A7C6718004DC7A2 /* TwitternatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF36D1A7C6718004DC7A2 /* TwitternatorTests.m */; };
 		649DF3791A7C6846004DC7A2 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF3781A7C6846004DC7A2 /* HomeViewController.m */; };
-		649DF37F1A7C6AAF004DC7A2 /* TweetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF37E1A7C6AAF004DC7A2 /* TweetListViewController.m */; };
 		649DF3821A7C6B0D004DC7A2 /* ClassifyTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF3811A7C6B0D004DC7A2 /* ClassifyTweetViewController.m */; };
 		649DF3851A7C6B2B004DC7A2 /* StoredTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF3841A7C6B2B004DC7A2 /* StoredTweetsViewController.m */; };
 		649DF3891A7C6BDA004DC7A2 /* TwitterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF3881A7C6BDA004DC7A2 /* TwitterManager.m */; };
@@ -24,6 +23,10 @@
 		649DF3981A7C730D004DC7A2 /* Tweet+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF3971A7C730D004DC7A2 /* Tweet+Fetch.m */; };
 		649DF39B1A7C7D4F004DC7A2 /* Author+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF39A1A7C7D4F004DC7A2 /* Author+Create.m */; };
 		649DF39E1A7C80FD004DC7A2 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF39D1A7C80FD004DC7A2 /* CoreDataTableViewController.m */; };
+		649DF3A61A7C83BD004DC7A2 /* TweetsCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 649DF3A51A7C83BD004DC7A2 /* TweetsCDTVC.m */; };
+		649DF3AB1A7C9245004DC7A2 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 649DF3A81A7C9245004DC7A2 /* TwitterKit.framework */; };
+		649DF3AC1A7C9245004DC7A2 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 649DF3A91A7C9245004DC7A2 /* TwitterKitResources.bundle */; };
+		649DF3AD1A7C9245004DC7A2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 649DF3AA1A7C9245004DC7A2 /* Fabric.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +54,6 @@
 		649DF36D1A7C6718004DC7A2 /* TwitternatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitternatorTests.m; sourceTree = "<group>"; };
 		649DF3771A7C6846004DC7A2 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Twitternator/HomeViewController.h; sourceTree = "<group>"; };
 		649DF3781A7C6846004DC7A2 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Twitternator/HomeViewController.m; sourceTree = "<group>"; };
-		649DF37D1A7C6AAF004DC7A2 /* TweetListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TweetListViewController.h; path = Twitternator/TweetListViewController.h; sourceTree = "<group>"; };
-		649DF37E1A7C6AAF004DC7A2 /* TweetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TweetListViewController.m; path = Twitternator/TweetListViewController.m; sourceTree = "<group>"; };
 		649DF3801A7C6B0D004DC7A2 /* ClassifyTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassifyTweetViewController.h; path = Twitternator/ClassifyTweetViewController.h; sourceTree = "<group>"; };
 		649DF3811A7C6B0D004DC7A2 /* ClassifyTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassifyTweetViewController.m; path = Twitternator/ClassifyTweetViewController.m; sourceTree = "<group>"; };
 		649DF3831A7C6B2B004DC7A2 /* StoredTweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoredTweetsViewController.h; path = Twitternator/StoredTweetsViewController.h; sourceTree = "<group>"; };
@@ -69,6 +70,11 @@
 		649DF39A1A7C7D4F004DC7A2 /* Author+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Author+Create.m"; sourceTree = "<group>"; };
 		649DF39C1A7C80FD004DC7A2 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = Twitternator/CoreDataTableViewController.h; sourceTree = "<group>"; };
 		649DF39D1A7C80FD004DC7A2 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = Twitternator/CoreDataTableViewController.m; sourceTree = "<group>"; };
+		649DF3A41A7C83BD004DC7A2 /* TweetsCDTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TweetsCDTVC.h; path = Twitternator/TweetsCDTVC.h; sourceTree = "<group>"; };
+		649DF3A51A7C83BD004DC7A2 /* TweetsCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TweetsCDTVC.m; path = Twitternator/TweetsCDTVC.m; sourceTree = "<group>"; };
+		649DF3A81A7C9245004DC7A2 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		649DF3A91A7C9245004DC7A2 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TwitterKitResources.bundle; sourceTree = "<group>"; };
+		649DF3AA1A7C9245004DC7A2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				649DF3AB1A7C9245004DC7A2 /* TwitterKit.framework in Frameworks */,
+				649DF3AD1A7C9245004DC7A2 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +130,7 @@
 		649DF34E1A7C6718004DC7A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				649DF3AE1A7C929D004DC7A2 /* Frameworks */,
 				649DF3521A7C6718004DC7A2 /* AppDelegate.h */,
 				649DF3531A7C6718004DC7A2 /* AppDelegate.m */,
 				649DF3551A7C6718004DC7A2 /* Twitternator.xcdatamodeld */,
@@ -153,10 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				649DF39F1A7C810A004DC7A2 /* CoreDataTableViewController */,
+				649DF3A41A7C83BD004DC7A2 /* TweetsCDTVC.h */,
+				649DF3A51A7C83BD004DC7A2 /* TweetsCDTVC.m */,
 				649DF3771A7C6846004DC7A2 /* HomeViewController.h */,
 				649DF3781A7C6846004DC7A2 /* HomeViewController.m */,
-				649DF37D1A7C6AAF004DC7A2 /* TweetListViewController.h */,
-				649DF37E1A7C6AAF004DC7A2 /* TweetListViewController.m */,
 				649DF3801A7C6B0D004DC7A2 /* ClassifyTweetViewController.h */,
 				649DF3811A7C6B0D004DC7A2 /* ClassifyTweetViewController.m */,
 				649DF3831A7C6B2B004DC7A2 /* StoredTweetsViewController.h */,
@@ -208,6 +217,16 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		649DF3AE1A7C929D004DC7A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				649DF3A81A7C9245004DC7A2 /* TwitterKit.framework */,
+				649DF3A91A7C9245004DC7A2 /* TwitterKitResources.bundle */,
+				649DF3AA1A7C9245004DC7A2 /* Fabric.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -218,6 +237,7 @@
 				649DF3471A7C6718004DC7A2 /* Sources */,
 				649DF3481A7C6718004DC7A2 /* Frameworks */,
 				649DF3491A7C6718004DC7A2 /* Resources */,
+				649DF3A71A7C91CB004DC7A2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -288,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				649DF3AC1A7C9245004DC7A2 /* TwitterKitResources.bundle in Resources */,
 				649DF35D1A7C6718004DC7A2 /* Main.storyboard in Resources */,
 				649DF3621A7C6718004DC7A2 /* LaunchScreen.xib in Resources */,
 				649DF35F1A7C6718004DC7A2 /* Images.xcassets in Resources */,
@@ -303,6 +324,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		649DF3A71A7C91CB004DC7A2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 5c58df93cd887e98abf06d90256963299b7edd47 e6cbed2604dbff2e4910dac0aabc101f62e9375fda2d8a9b9e7913caae2e8622";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		649DF3471A7C6718004DC7A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -317,7 +354,7 @@
 				649DF3511A7C6718004DC7A2 /* main.m in Sources */,
 				649DF3571A7C6718004DC7A2 /* Twitternator.xcdatamodeld in Sources */,
 				649DF39E1A7C80FD004DC7A2 /* CoreDataTableViewController.m in Sources */,
-				649DF37F1A7C6AAF004DC7A2 /* TweetListViewController.m in Sources */,
+				649DF3A61A7C83BD004DC7A2 /* TweetsCDTVC.m in Sources */,
 				649DF3951A7C7274004DC7A2 /* Tweet.m in Sources */,
 				649DF3821A7C6B0D004DC7A2 /* ClassifyTweetViewController.m in Sources */,
 				649DF3791A7C6846004DC7A2 /* HomeViewController.m in Sources */,
@@ -444,6 +481,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Twitternator",
+				);
 				INFOPLIST_FILE = Twitternator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -454,6 +495,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Twitternator",
+				);
 				INFOPLIST_FILE = Twitternator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
