@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1is-tQ-SCK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bf1-W2-fLB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -118,9 +118,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ckk-TW-aaq">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="A1c-W9-ONZ">
+                        <barButtonItem key="rightBarButtonItem" title="Ready!" id="A1c-W9-ONZ">
                             <connections>
-                                <segue destination="1is-tQ-SCK" kind="show" id="cXP-xt-qxo"/>
+                                <segue destination="1is-tQ-SCK" kind="show" identifier="Show Classify" id="cXP-xt-qxo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -150,7 +150,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bT7-iE-CsO">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="284"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgG-1S-Mhu">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgG-1S-Mhu" userLabel="Boring">
                                         <rect key="frame" x="8" y="113" width="60" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -158,7 +158,7 @@
                                             <constraint firstAttribute="width" constant="60" id="Z1r-Oq-rVm"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGO-4r-3s1">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGO-4r-3s1" userLabel="Cool">
                                         <rect key="frame" x="412" y="113" width="60" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -170,10 +170,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="eGO-4r-3s1" firstAttribute="top" secondItem="bT7-iE-CsO" secondAttribute="top" constant="113" id="N0H-rW-CJP"/>
                                     <constraint firstAttribute="trailing" secondItem="eGO-4r-3s1" secondAttribute="trailing" constant="8" id="OHc-GT-Fhz"/>
+                                    <constraint firstAttribute="bottom" secondItem="eGO-4r-3s1" secondAttribute="bottom" constant="111" id="Ton-Ma-Aj7"/>
+                                    <constraint firstAttribute="bottom" secondItem="kgG-1S-Mhu" secondAttribute="bottom" constant="111" id="qm0-6J-BUM"/>
                                     <constraint firstItem="kgG-1S-Mhu" firstAttribute="leading" secondItem="bT7-iE-CsO" secondAttribute="leading" constant="8" id="zIr-uz-iRA"/>
-                                    <constraint firstItem="kgG-1S-Mhu" firstAttribute="top" secondItem="bT7-iE-CsO" secondAttribute="top" constant="113" id="zLQ-Ym-uh1"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="2mn-yb-wQj" appends="YES" id="slj-Cy-hMk"/>
@@ -202,6 +202,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="boringBasket" destination="kgG-1S-Mhu" id="Rqe-7X-Ydi"/>
+                        <outlet property="coolBasket" destination="eGO-4r-3s1" id="luB-o7-yja"/>
                         <outlet property="gameView" destination="bT7-iE-CsO" id="nyT-XW-CLy"/>
                     </connections>
                 </viewController>
@@ -241,6 +243,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="DgZ-8C-Ldd">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitternator" translatesAutoresizingMaskIntoConstraints="NO" id="aNR-Cb-q7t">
+                                    <rect key="frame" x="22" y="13" width="193" height="69"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="69" id="2dZ-1D-a8n"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="centerY" secondItem="aNR-Cb-q7t" secondAttribute="centerY" id="08x-RS-iGs"/>
+                                <constraint firstItem="aNR-Cb-q7t" firstAttribute="leading" secondItem="DgZ-8C-Ldd" secondAttribute="leading" constant="22" id="Rbt-wU-2YH"/>
+                                <constraint firstAttribute="trailing" secondItem="aNR-Cb-q7t" secondAttribute="trailing" constant="105" id="lQE-1v-3WB"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="home" id="eQ1-g6-fxv">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -256,7 +276,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="KLh-ou-ztT" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="PCZ-tf-1fs"/>
+                                    <segue destination="KLh-ou-ztT" kind="custom" identifier="Show Home" customClass="SWRevealViewControllerSeguePushController" id="PCZ-tf-1fs"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="choose" id="S9t-P1-Vmj">
@@ -344,7 +364,10 @@
             <point key="canvasLocation" x="209" y="-649"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="twitternator" width="702" height="108"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RFk-WF-INR"/>
+        <segue reference="PCZ-tf-1fs"/>
     </inferredMetricsTieBreakers>
 </document>

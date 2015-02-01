@@ -11,11 +11,11 @@
 
 @implementation Tweet (Fetch)
 
-+(Tweet *)tweetFromDictionary:(NSDictionary *)tweetDictionary inManagedObjectContext:(NSManagedObjectContext *)context
++(Tweet *)tweetInstanceFromTWTRTweet:(TWTRTweet *)receivedTweet inManagedObjectContext:(NSManagedObjectContext *)context
 {
     Tweet *tweet = nil;
     
-    NSString *unique = [tweetDictionary valueForKey:@"tweetID"];
+    NSString *unique = receivedTweet.tweetID;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
     request.predicate = [NSPredicate predicateWithFormat:@"tweetID = %@", unique];
     
@@ -30,10 +30,10 @@
         tweet = [NSEntityDescription insertNewObjectForEntityForName:@"Tweet"
                                               inManagedObjectContext:context];
         tweet.tweetID =unique;
-        tweet.text = [tweetDictionary valueForKey:@"text"];
+        tweet.text = receivedTweet.text;
         //NSDate *date;// =
         //tweet.createdAt = date;
-        tweet.whoTweeted = [Author authorWithName:[tweetDictionary valueForKey:@"user"] inManagedObjectContext:context];
+        tweet.whoTweeted = [Author authorWithName:receivedTweet.author.name inManagedObjectContext:context];
         
     }
     
@@ -42,8 +42,8 @@
 
 +(void)loadTweetsFromArray:(NSArray *)tweetArray intoManagedObjectContext:(NSManagedObjectContext *)context
 {
-    for (NSDictionary *tweetDictionary in tweetArray) {
-        [self tweetFromDictionary:tweetDictionary inManagedObjectContext:context];
+    for (TWTRTweet *tweet in tweetArray) {
+        [self tweetInstanceFromTWTRTweet:tweet inManagedObjectContext:context];
     }
 
 }

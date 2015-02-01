@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ClassifyTweetViewController : UIViewController
+@property (strong, nonatomic) NSManagedObjectContext *context;
+@property (weak, nonatomic) IBOutlet UIView *coolBasket;
+@property (weak, nonatomic) IBOutlet UIView *boringBasket;
 @property (strong, nonatomic) NSMutableArray *tweetsArray;
 @end

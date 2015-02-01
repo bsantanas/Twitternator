@@ -20,7 +20,7 @@
     
     [self navigationBarLayout];
     
-    [Tweet loadTweetsFromArray:@[@{@"tweetID":@"20",@"text":@"Porfavor, funciona",@"user":@"yo mismo soy"},@{@"tweetID":@"21",@"text":@"hola",@"user":@"yo mismo soy"},@{@"tweetID":@"22",@"text":@"Porfavor, funciona",@"user":@"yo mismo soy"}] intoManagedObjectContext:self.context];
+    //[Tweet loadTweetsFromArray:@[@{@"tweetID":@"20",@"text":@"Porfavor, funciona",@"user":@"yo mismo soy"},@{@"tweetID":@"21",@"text":@"hola",@"user":@"yo mismo soy"},@{@"tweetID":@"22",@"text":@"Porfavor, funciona",@"user":@"yo mismo soy"}] intoManagedObjectContext:self.context];
     [self.context save:NULL];
 
 }

@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "SWRevealViewController.h"
 #import "CoolTweetsCDTVC.h"
+#import "HomeViewController.h"
 
 @implementation MenuViewController{
     NSArray *menuItems;
@@ -40,11 +41,17 @@
     return cell;
 }
 
+#pragma mark - Navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"Show Cool Tweets"]) {
         UINavigationController *nav = [segue destinationViewController];
         CoolTweetsCDTVC *vc = (CoolTweetsCDTVC *)nav.topViewController;
+        vc.context = self.context;
+    }else if ([[segue identifier] isEqualToString:@"Show Home"]){
+        UINavigationController *nav = [segue destinationViewController];
+        HomeViewController *vc = (HomeViewController *)nav.topViewController;
         vc.context = self.context;
     }else {
         NSLog(@"Segue to controller [%@] that does not support passing managedObjectContext", [segue destinationViewController]);

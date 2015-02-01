@@ -9,6 +9,7 @@
 #import "ClassifyTweetViewController.h"
 #import <TwitterKit/TwitterKit.h>
 #import "TweetElementBehavior.h"
+#import "Tweet+Fetch.h"
 
 @interface ClassifyTweetViewController ()
 {
@@ -25,42 +26,12 @@
 @implementation ClassifyTweetViewController
 
 static const CGSize TWEET_SMALL = { 40, 40 };
+static const int RADIUS = 50;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     ceiling = CGPointMake(self.view.frame.size.width/2, 0);
-    
-    self.tweetsArray = [[NSMutableArray alloc] init];
-}
-
-- (IBAction)drop:(id)sender {
-    [self hangTweet];
-}
-
--(void) hangTweet
-{
-    if (YES)//has tweets to drop)
-    {
-        /*TWTRTweet *tweet = [self.tweetsArray lastObject];
-         [self.tweetsArray removeLastObject];
-         TWTRTweetView *tweetView = [[TWTRTweetView alloc] initWithTweet:tweet style:TWTRTweetViewStyleCompact];
-         */
-        CGRect frame = CGRectMake(100, 50, 200, 50);
-        
-        UIView *dropView = [[UIView alloc] initWithFrame:frame];
-        dropView.backgroundColor = [UIColor greenColor];
-        [self.gameView addSubview:dropView];
-        
-        self.fallingTweet = dropView;
-        
-        [self.elementBehavior addItem:dropView];
-        [self attachTweetToCeiling];
-        
-    }else{
-        //No tweets at the moment
-        
-    }
 }
 
 - (IBAction)grabTweet:(UIPanGestureRecognizer *)sender
@@ -68,13 +39,12 @@ static const CGSize TWEET_SMALL = { 40, 40 };
     CGPoint touchPoint = [sender locationInView:self.gameView];
     if (sender.state == UIGestureRecognizerStateBegan) {
         [self shrinkTweet];
-        [self.elementBehavior addItem:self.fallingTweet];
         [self attachTweetToPoint:touchPoint];
     } else if (sender.state == UIGestureRecognizerStateChanged) {
-        CGRect hola = self.fallingTweet.frame;
         self.grabBehavior.anchorPoint = touchPoint;
     } else if (sender.state == UIGestureRecognizerStateEnded) {
         [self.animator removeBehavior:self.grabBehavior];
+        [self checkIfDeposited];
     }
 }
 
@@ -97,15 +67,39 @@ static const CGSize TWEET_SMALL = { 40, 40 };
 -(void) shrinkTweet
 {
     [UIView animateWithDuration:0.3 animations:^{
-        CGRect smallFrame = self.fallingTweet.frame;
+        CGRect smallFrame = self.fallingTweet.bounds;
         smallFrame.size = TWEET_SMALL;
-        self.fallingTweet.frame = smallFrame;
+        self.fallingTweet.bounds = smallFrame;
     } completion:^(BOOL finished) {
             [self.animator removeBehavior:self.attachmentToCeiling];
                      }];
-    CGRect smallFrame = self.fallingTweet.frame;
-    smallFrame.size = TWEET_SMALL;
 
+}
+
+- (IBAction)drop:(id)sender {
+    [self hangTweet];
+}
+
+-(void) hangTweet
+{
+    if ([self.tweetsArray count])//has tweets to drop)
+    {
+        CGRect frame = CGRectMake(100, 50, 100, 50);
+        
+        TWTRTweetView *dropView = [[TWTRTweetView alloc] initWithTweet:self.tweetsArray.firstObject];
+        dropView.frame = frame;
+        dropView.backgroundColor = [UIColor greenColor];
+        [self.gameView addSubview:dropView];
+        
+        self.fallingTweet = dropView;
+        
+        [self.elementBehavior addItem:dropView];
+        [self attachTweetToCeiling];
+        
+    }else{
+        //No tweets at the moment
+        
+    }
 }
 
 - (TweetElementBehavior *)elementBehavior
@@ -124,6 +118,28 @@ static const CGSize TWEET_SMALL = { 40, 40 };
     }
     return _animator;
 }
+
+-(void)checkIfDeposited
+{
+    
+    if([self distanceBetweet:self.coolBasket.center and:self.fallingTweet.center] < RADIUS){
+        [Tweet tweetInstanceFromTWTRTweet:self.tweetsArray.firstObject inManagedObjectContext:self.context];
+    }else if([self distanceBetweet:self.boringBasket.center and:self.fallingTweet.center] < RADIUS){
+        [self.elementBehavior removeItem:self.fallingTweet];
+        [self.fallingTweet removeFromSuperview];
+        if([self.tweetsArray count])
+            [self.tweetsArray removeObjectAtIndex:0];
+    }
+}
+
+-(float) distanceBetweet:(CGPoint)point1 and: (CGPoint)point2
+{
+    float xDist = pow(point1.x - point2.x,2);
+    float yDist = pow(point1.y - point2.y,2);
+    return sqrt(xDist + yDist);
+}
+
+
 
 /*
 #pragma mark - Navigation

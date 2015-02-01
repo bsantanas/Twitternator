@@ -9,12 +9,14 @@
 #import <TwitterKit/TwitterKit.h>
 #import "HomeViewController.h"
 #import "SWRevealViewController.h"
+#import "ClassifyTweetViewController.h"
 
 @interface HomeViewController ()
-@property (strong,nonatomic) NSArray *tweetsArray;
-@property (strong,nonatomic) UIRefreshControl *refreshControl;
-@property (nonatomic, strong) TWTRTweetTableViewCell *prototypeCell;
-@property (nonatomic, strong) NSMutableArray *selectedTweets;
+@property (strong, nonatomic) NSArray *tweetsArray;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) TWTRTweetTableViewCell *prototypeCell;
+@property (strong, nonatomic) NSMutableArray *selectedTweets;
+@property (strong, nonatomic) UIColor *rowColor;
 
 @end
 
@@ -72,6 +74,7 @@
     
     TWTRTweetTableViewCell *cell = (TWTRTweetTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [cell configureWithTweet:tweet];
+    cell.backgroundColor = self.rowColor;
   
     return cell;
 }
@@ -92,6 +95,11 @@
 {
     NSLog(@"Selected Row");
     [self.selectedTweets addObject:self.tweetsArray[indexPath.row]];
+    [self.tableView beginUpdates];
+    [TWTRTweetView appearance].backgroundColor = [UIColor blueColor];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    //[TWTRTweetView appearance].backgroundColor = [UIColor clearColor];
+    [self.tableView endUpdates];
 }
 
 #pragma mark - Layout
@@ -187,5 +195,26 @@
     }
 }
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"Show Classify"]) {
+        ClassifyTweetViewController *vc = [segue destinationViewController];
+        vc.context = self.context;
+        vc.tweetsArray = [self.tweetsArray mutableCopy];
+    }
+}
+
+#pragma mark - Constructors
+
+-(UIColor *)rowColor
+{
+    if(!_rowColor){
+        _rowColor = [[UIColor alloc] init];
+        _rowColor = [UIColor clearColor];
+    }
+    return _rowColor;
+}
 
 @end
