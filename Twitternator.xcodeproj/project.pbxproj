@@ -28,6 +28,7 @@
 		649DF3AD1A7C9245004DC7A2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 649DF3AA1A7C9245004DC7A2 /* Fabric.framework */; };
 		64A208861A7D07F700B54797 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A208851A7D07F600B54797 /* SWRevealViewController.m */; };
 		64A208891A7D17B400B54797 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A208881A7D17B400B54797 /* MenuViewController.m */; };
+		64B039801A7D8DD4004011A9 /* TweetElementBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B0397F1A7D8DD4004011A9 /* TweetElementBehavior.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		64A208851A7D07F600B54797 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		64A208871A7D17B400B54797 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		64A208881A7D17B400B54797 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		64B0397E1A7D8DD4004011A9 /* TweetElementBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetElementBehavior.h; sourceTree = "<group>"; };
+		64B0397F1A7D8DD4004011A9 /* TweetElementBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetElementBehavior.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +201,8 @@
 		649DF3861A7C6B9C004DC7A2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				64B0397E1A7D8DD4004011A9 /* TweetElementBehavior.h */,
+				64B0397F1A7D8DD4004011A9 /* TweetElementBehavior.m */,
 				649DF3871A7C6BDA004DC7A2 /* TwitterManager.h */,
 				649DF3881A7C6BDA004DC7A2 /* TwitterManager.m */,
 			);
@@ -362,6 +367,7 @@
 				649DF39E1A7C80FD004DC7A2 /* CoreDataTableViewController.m in Sources */,
 				649DF3A61A7C83BD004DC7A2 /* CoolTweetsCDTVC.m in Sources */,
 				649DF3951A7C7274004DC7A2 /* Tweet.m in Sources */,
+				64B039801A7D8DD4004011A9 /* TweetElementBehavior.m in Sources */,
 				649DF3821A7C6B0D004DC7A2 /* ClassifyTweetViewController.m in Sources */,
 				649DF3791A7C6846004DC7A2 /* HomeViewController.m in Sources */,
 			);

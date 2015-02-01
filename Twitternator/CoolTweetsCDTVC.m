@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Bernardo Santana. All rights reserved.
 //
 
-#import <TwitterKit/TwitterKit.h>
 #import "SWRevealViewController.h"
 #import "CoolTweetsCDTVC.h"
 #import "Tweet+Fetch.h"
@@ -21,45 +20,6 @@
     
     [self navigationBarLayout];
     
-    /*[[Twitter sharedInstance] logInGuestWithCompletion:^(TWTRGuestSession *guestSession, NSError *error) {
-        [[[Twitter sharedInstance] APIClient] loadTweetWithID:@"20" completion:^(TWTRTweet *tweet, NSError *error) {
-            TWTRTweetView *tweetView = [[TWTRTweetView alloc] initWithTweet:tweet style:TWTRTweetViewStyleRegular];
-            [self.view addSubview:tweetView];
-        }];
-    }];*/
-    
-    /*NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/statuses/show.json";
-    NSDictionary *params = @{@"id" : @"20"};
-    NSError *clientError;
-    NSURLRequest *request = [[[Twitter sharedInstance] APIClient]
-                             URLRequestWithMethod:@"GET"
-                             URL:statusesShowEndpoint
-                             parameters:params
-                             error:&clientError];
-    
-    if (request) {
-        [[[Twitter sharedInstance] APIClient]
-         sendTwitterRequest:request
-         completion:^(NSURLResponse *response,
-                      NSData *data,
-                      NSError *connectionError) {
-             if (data) {
-                 // handle the response data e.g.
-                 NSError *jsonError;
-                 NSDictionary *json = [NSJSONSerialization
-                                       JSONObjectWithData:data
-                                       options:0
-                                       error:&jsonError];
-             }
-             else {
-                 NSLog(@"Error: %@", connectionError);
-             }
-         }];
-    }
-    else {
-        NSLog(@"Error: %@", clientError);
-    }
-    */
     [Tweet loadTweetsFromArray:@[@{@"tweetID":@"20",@"text":@"Porfavor, funciona",@"user":@"yo mismo soy"},@{@"tweetID":@"21",@"text":@"hola",@"user":@"yo mismo soy"},@{@"tweetID":@"22",@"text":@"Porfavor, funciona",@"user":@"yo mismo soy"}] intoManagedObjectContext:self.context];
     [self.context save:NULL];
 

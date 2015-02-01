@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ClassifyTweetViewController : UIViewController
-
+@property (strong, nonatomic) NSMutableArray *tweetsArray;
 @end
