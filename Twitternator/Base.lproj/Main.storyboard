@@ -68,7 +68,7 @@
             </objects>
             <point key="canvasLocation" x="757" y="-649"/>
         </scene>
-        <!--Cool TweetsCDTVC-->
+        <!--My Saved Tweets-->
         <scene sceneID="j7w-h3-QF4">
             <objects>
                 <tableViewController id="K3F-TV-PzM" customClass="CoolTweetsCDTVC" sceneMemberID="viewController">
@@ -77,11 +77,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet Cell" rowHeight="64" id="7fs-lc-RzP">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Tweet Cell" rowHeight="64" id="7fs-lc-RzP">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7fs-lc-RzP" id="zhV-8E-OwH">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="DcD-r1-YFv" kind="show" identifier="Show Detail" id="Osh-ct-D6z"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -89,12 +92,60 @@
                             <outlet property="delegate" destination="K3F-TV-PzM" id="Sfb-Ci-bvv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="d36-hq-eRG"/>
+                    <navigationItem key="navigationItem" title="My Saved Tweets" id="d36-hq-eRG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhS-2P-ZIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="757" y="-81"/>
+        </scene>
+        <!--Tweet Detail View Controller-->
+        <scene sceneID="it5-Kt-S2U">
+            <objects>
+                <viewController id="DcD-r1-YFv" customClass="TweetDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HVZ-bZ-bOi"/>
+                        <viewControllerLayoutGuide type="bottom" id="hl0-3h-2Ux"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Ir-YF-fSj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nyu-DL-Aus">
+                                <rect key="frame" x="16" y="72" width="72" height="67"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRm-P5-QrZ">
+                                <rect key="frame" x="96" y="108" width="208" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="typ-nl-Ia1">
+                                <rect key="frame" x="16" y="147" width="288" height="207"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5Z-zW-JUR">
+                                <rect key="frame" x="96" y="72" width="214" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="authorName" destination="r5Z-zW-JUR" id="WBq-JN-mgx"/>
+                        <outlet property="authorScreenName" destination="KRm-P5-QrZ" id="pEU-fM-ldg"/>
+                        <outlet property="content" destination="typ-nl-Ia1" id="ArP-4E-TeW"/>
+                        <outlet property="profileImage" destination="Nyu-DL-Aus" id="ElS-Ja-YZI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="56X-Bn-qfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1242" y="-81"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="Klu-sM-cxB">
@@ -314,8 +365,12 @@
                                             <constraint firstAttribute="height" constant="60" id="i5Y-Xi-X4y"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ulc-Xf-Lpa">
-                                        <rect key="frame" x="211" y="127" width="58" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ulc-Xf-Lpa">
+                                        <rect key="frame" x="121" y="104" width="239" height="77"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="77" id="PfQ-Py-O1n"/>
+                                            <constraint firstAttribute="width" constant="239" id="r62-d5-20U"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -446,7 +501,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S9t-P1-Vmj" id="Pe2-PX-ELc">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cool Tweets :-)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yn-IN-e8I">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Cool Tweets :-)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yn-IN-e8I">
                                             <rect key="frame" x="8" y="12" width="186" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
@@ -532,6 +587,6 @@
         <image name="twitternator" width="702" height="108"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RFk-WF-INR"/>
+        <segue reference="PCZ-tf-1fs"/>
     </inferredMetricsTieBreakers>
 </document>

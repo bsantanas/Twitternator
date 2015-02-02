@@ -8,7 +8,12 @@
 
 #import "SWRevealViewController.h"
 #import "CoolTweetsCDTVC.h"
+#import "TweetDetailViewController.h"
 #import "Tweet+Fetch.h"
+
+@interface CoolTweetsCDTVC()
+@property (strong, nonatomic) Tweet *selectedTweet;
+@end
 
 @implementation CoolTweetsCDTVC
 
@@ -32,7 +37,7 @@
     
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
     request.predicate = nil;
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"tweetID" ascending:YES selector:@selector(localizedStandardCompare:)]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"text" ascending:YES selector:@selector(localizedStandardCompare:)]];
     request.fetchLimit = 100;
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
@@ -58,6 +63,17 @@
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:85/255.0 green:172/255.0 blue:238/255.0 alpha:1.0];    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedTweet = [self.fetchedResultsController objectAtIndexPath:indexPath];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    TweetDetailViewController *vc = segue.destinationViewController;
+    vc.tweet = self.selectedTweet;
 }
 
 

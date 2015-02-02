@@ -39,6 +39,7 @@
 		64B039931A7EE040004011A9 /* boxing_bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64B0398C1A7EE040004011A9 /* boxing_bell.wav */; };
 		64B039941A7EE040004011A9 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64B0398D1A7EE040004011A9 /* coin.wav */; };
 		64B039961A7EE077004011A9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B039951A7EE077004011A9 /* AudioToolbox.framework */; };
+		64B039991A7F2138004011A9 /* TweetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B039981A7F2138004011A9 /* TweetDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,8 @@
 		64B0398C1A7EE040004011A9 /* boxing_bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boxing_bell.wav; sourceTree = "<group>"; };
 		64B0398D1A7EE040004011A9 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
 		64B039951A7EE077004011A9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		64B039971A7F2138004011A9 /* TweetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TweetDetailViewController.h; path = Twitternator/TweetDetailViewController.h; sourceTree = "<group>"; };
+		64B039981A7F2138004011A9 /* TweetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TweetDetailViewController.m; path = Twitternator/TweetDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,8 @@
 				64A208851A7D07F600B54797 /* SWRevealViewController.m */,
 				64B039811A7E7808004011A9 /* AboutViewController.h */,
 				64B039821A7E7808004011A9 /* AboutViewController.m */,
+				64B039971A7F2138004011A9 /* TweetDetailViewController.h */,
+				64B039981A7F2138004011A9 /* TweetDetailViewController.m */,
 			);
 			name = "View Controllers";
 			path = ..;
@@ -407,6 +412,7 @@
 				649DF39B1A7C7D4F004DC7A2 /* Author+Create.m in Sources */,
 				649DF3541A7C6718004DC7A2 /* AppDelegate.m in Sources */,
 				649DF3891A7C6BDA004DC7A2 /* TwitterManager.m in Sources */,
+				64B039991A7F2138004011A9 /* TweetDetailViewController.m in Sources */,
 				649DF3921A7C7259004DC7A2 /* Author.m in Sources */,
 				64A208891A7D17B400B54797 /* MenuViewController.m in Sources */,
 				649DF3981A7C730D004DC7A2 /* Tweet+Fetch.m in Sources */,
