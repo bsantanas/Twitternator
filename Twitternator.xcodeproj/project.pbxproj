@@ -29,6 +29,16 @@
 		64A208861A7D07F700B54797 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A208851A7D07F600B54797 /* SWRevealViewController.m */; };
 		64A208891A7D17B400B54797 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A208881A7D17B400B54797 /* MenuViewController.m */; };
 		64B039801A7D8DD4004011A9 /* TweetElementBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B0397F1A7D8DD4004011A9 /* TweetElementBehavior.m */; };
+		64B039831A7E7808004011A9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B039821A7E7808004011A9 /* AboutViewController.m */; };
+		64B039851A7EBA77004011A9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B039841A7EBA77004011A9 /* CoreLocation.framework */; };
+		64B0398E1A7EE040004011A9 /* chime.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64B039871A7EE040004011A9 /* chime.wav */; };
+		64B0398F1A7EE040004011A9 /* boing_poing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64B039881A7EE040004011A9 /* boing_poing.wav */; };
+		64B039901A7EE040004011A9 /* boo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64B039891A7EE040004011A9 /* boo.wav */; };
+		64B039911A7EE040004011A9 /* chime_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64B0398A1A7EE040004011A9 /* chime_up.wav */; };
+		64B039921A7EE040004011A9 /* boom_x.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64B0398B1A7EE040004011A9 /* boom_x.wav */; };
+		64B039931A7EE040004011A9 /* boxing_bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64B0398C1A7EE040004011A9 /* boxing_bell.wav */; };
+		64B039941A7EE040004011A9 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64B0398D1A7EE040004011A9 /* coin.wav */; };
+		64B039961A7EE077004011A9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B039951A7EE077004011A9 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,12 +85,23 @@
 		649DF3A81A7C9245004DC7A2 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		649DF3A91A7C9245004DC7A2 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TwitterKitResources.bundle; sourceTree = "<group>"; };
 		649DF3AA1A7C9245004DC7A2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		64A208841A7D07F600B54797 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		64A208851A7D07F600B54797 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		64A208871A7D17B400B54797 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		64A208881A7D17B400B54797 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		64A208841A7D07F600B54797 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = Twitternator/SWRevealViewController.h; sourceTree = "<group>"; };
+		64A208851A7D07F600B54797 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = Twitternator/SWRevealViewController.m; sourceTree = "<group>"; };
+		64A208871A7D17B400B54797 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = Twitternator/MenuViewController.h; sourceTree = "<group>"; };
+		64A208881A7D17B400B54797 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = Twitternator/MenuViewController.m; sourceTree = "<group>"; };
 		64B0397E1A7D8DD4004011A9 /* TweetElementBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetElementBehavior.h; sourceTree = "<group>"; };
 		64B0397F1A7D8DD4004011A9 /* TweetElementBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetElementBehavior.m; sourceTree = "<group>"; };
+		64B039811A7E7808004011A9 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Twitternator/AboutViewController.h; sourceTree = "<group>"; };
+		64B039821A7E7808004011A9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Twitternator/AboutViewController.m; sourceTree = "<group>"; };
+		64B039841A7EBA77004011A9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		64B039871A7EE040004011A9 /* chime.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chime.wav; sourceTree = "<group>"; };
+		64B039881A7EE040004011A9 /* boing_poing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boing_poing.wav; sourceTree = "<group>"; };
+		64B039891A7EE040004011A9 /* boo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boo.wav; sourceTree = "<group>"; };
+		64B0398A1A7EE040004011A9 /* chime_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chime_up.wav; sourceTree = "<group>"; };
+		64B0398B1A7EE040004011A9 /* boom_x.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boom_x.wav; sourceTree = "<group>"; };
+		64B0398C1A7EE040004011A9 /* boxing_bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boxing_bell.wav; sourceTree = "<group>"; };
+		64B0398D1A7EE040004011A9 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
+		64B039951A7EE077004011A9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B039961A7EE077004011A9 /* AudioToolbox.framework in Frameworks */,
+				64B039851A7EBA77004011A9 /* CoreLocation.framework in Frameworks */,
 				649DF3AB1A7C9245004DC7A2 /* TwitterKit.framework in Frameworks */,
 				649DF3AD1A7C9245004DC7A2 /* Fabric.framework in Frameworks */,
 			);
@@ -136,6 +159,7 @@
 		649DF34E1A7C6718004DC7A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				64B039861A7EE02D004011A9 /* Sound Effects */,
 				649DF3AE1A7C929D004DC7A2 /* Frameworks */,
 				649DF3521A7C6718004DC7A2 /* AppDelegate.h */,
 				649DF3531A7C6718004DC7A2 /* AppDelegate.m */,
@@ -178,6 +202,8 @@
 				64A208881A7D17B400B54797 /* MenuViewController.m */,
 				64A208841A7D07F600B54797 /* SWRevealViewController.h */,
 				64A208851A7D07F600B54797 /* SWRevealViewController.m */,
+				64B039811A7E7808004011A9 /* AboutViewController.h */,
+				64B039821A7E7808004011A9 /* AboutViewController.m */,
 			);
 			name = "View Controllers";
 			path = ..;
@@ -230,11 +256,27 @@
 		649DF3AE1A7C929D004DC7A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64B039951A7EE077004011A9 /* AudioToolbox.framework */,
+				64B039841A7EBA77004011A9 /* CoreLocation.framework */,
 				649DF3A81A7C9245004DC7A2 /* TwitterKit.framework */,
 				649DF3A91A7C9245004DC7A2 /* TwitterKitResources.bundle */,
 				649DF3AA1A7C9245004DC7A2 /* Fabric.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64B039861A7EE02D004011A9 /* Sound Effects */ = {
+			isa = PBXGroup;
+			children = (
+				64B039881A7EE040004011A9 /* boing_poing.wav */,
+				64B039891A7EE040004011A9 /* boo.wav */,
+				64B0398B1A7EE040004011A9 /* boom_x.wav */,
+				64B0398C1A7EE040004011A9 /* boxing_bell.wav */,
+				64B0398A1A7EE040004011A9 /* chime_up.wav */,
+				64B039871A7EE040004011A9 /* chime.wav */,
+				64B0398D1A7EE040004011A9 /* coin.wav */,
+			);
+			name = "Sound Effects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,10 +360,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B039921A7EE040004011A9 /* boom_x.wav in Resources */,
 				649DF3AC1A7C9245004DC7A2 /* TwitterKitResources.bundle in Resources */,
 				649DF35D1A7C6718004DC7A2 /* Main.storyboard in Resources */,
+				64B039911A7EE040004011A9 /* chime_up.wav in Resources */,
+				64B039941A7EE040004011A9 /* coin.wav in Resources */,
+				64B039931A7EE040004011A9 /* boxing_bell.wav in Resources */,
 				649DF3621A7C6718004DC7A2 /* LaunchScreen.xib in Resources */,
 				649DF35F1A7C6718004DC7A2 /* Images.xcassets in Resources */,
+				64B039901A7EE040004011A9 /* boo.wav in Resources */,
+				64B0398F1A7EE040004011A9 /* boing_poing.wav in Resources */,
+				64B0398E1A7EE040004011A9 /* chime.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +414,7 @@
 				64A208861A7D07F700B54797 /* SWRevealViewController.m in Sources */,
 				649DF3571A7C6718004DC7A2 /* Twitternator.xcdatamodeld in Sources */,
 				649DF39E1A7C80FD004DC7A2 /* CoreDataTableViewController.m in Sources */,
+				64B039831A7E7808004011A9 /* AboutViewController.m in Sources */,
 				649DF3A61A7C83BD004DC7A2 /* CoolTweetsCDTVC.m in Sources */,
 				649DF3951A7C7274004DC7A2 /* Tweet.m in Sources */,
 				64B039801A7D8DD4004011A9 /* TweetElementBehavior.m in Sources */,

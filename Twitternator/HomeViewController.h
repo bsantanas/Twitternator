@@ -17,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UIView *initialLoginScreen;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+@property (weak, nonatomic) IBOutlet UILabel *instructionsLabel;
 @end
