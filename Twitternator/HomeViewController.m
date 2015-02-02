@@ -228,6 +228,7 @@
              }
              else {
                  NSLog(@"Error: %@", connectionError);
+                 [self displayErrorMessage];
                  [self.activityIndicator stopAnimating];
              }
              
@@ -235,6 +236,7 @@
     }
     else {
         NSLog(@"Error: %@", clientError);
+        [self displayErrorMessage];
         [self.activityIndicator stopAnimating];
     }
 }
@@ -275,6 +277,7 @@
              else {
                  NSLog(@"Error: %@", connectionError);
                  [self.activityIndicator stopAnimating];
+                 [self displayErrorMessage];
              }
              
          }];
@@ -282,6 +285,7 @@
     else {
         NSLog(@"Error: %@", clientError);
         [self.activityIndicator stopAnimating];
+        [self displayErrorMessage];
     }
 }
 

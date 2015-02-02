@@ -36,7 +36,6 @@
         tweet.whoTweeted = [Author authorWithName:receivedTweet.author.name inManagedObjectContext:context];
         
     }
-    
     return tweet;
 }
 
