@@ -16,6 +16,7 @@
 @interface HomeViewController () <CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
 }
+@property (nonatomic) BOOL loggedAsUser;
 @property (strong, nonatomic) NSMutableArray *tweetsArray;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) TWTRTweetTableViewCell *prototypeCell;
@@ -37,12 +38,7 @@
         self.context = appDelegate.managedObjectContext;
     }
     
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    [locationManager requestWhenInUseAuthorization];
-    [locationManager startUpdatingLocation];
-    
+    [self setLocationManager];
     [self menuNavigationLayout];
     [self configureTableView];
     
@@ -65,10 +61,13 @@
 
 -(void) configureTableView
 {
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-    [refresh addTarget:self.tableView action:@selector(fetchUserTweets)forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:(self.loggedAsUser ? @selector(fetchUserTweets) : @selector(fetchNearbyTweets))
+                  forControlEvents:UIControlEventValueChanged];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching more Tweets"];
+    [self.tableView addSubview:self.refreshControl];
+    
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.estimatedRowHeight = 150;
@@ -103,6 +102,7 @@
 {
     return [self.tweetsArray count];
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     TWTRTweet *tweet = self.tweetsArray[indexPath.row];
@@ -166,6 +166,7 @@
 #pragma mark - Twitter API Requests
 
 - (IBAction)loginTwitterAsUser:(id)sender {
+    self.loggedAsUser = YES;
     self.initialLoginScreen.hidden = YES;
     [[Twitter sharedInstance] logInWithCompletion:^
      (TWTRSession *session, NSError *error) {
@@ -175,7 +176,6 @@
          } else {
              [self.activityIndicator stopAnimating];
              NSLog(@"error: %@", [error localizedDescription]);
-             [self displayErrorMessage];
          }
          
      }];
@@ -183,6 +183,7 @@
 
 
 - (IBAction)loginAsGuest:(UIButton *)sender {
+    self.loggedAsUser = NO;
     self.initialLoginScreen.hidden = YES;
     [[Twitter sharedInstance] logInGuestWithCompletion:^
      (TWTRGuestSession *session, NSError *error) {
@@ -191,15 +192,17 @@
          } else {
              [self.activityIndicator stopAnimating];
              NSLog(@"error: %@", [error localizedDescription]);
-             [self displayErrorMessage];
          }
      }];
 }
 
 -(void) fetchUserTweets
 {
+    int numberOfTweets = [self.tweetsArray count];
+    if(numberOfTweets < 191) numberOfTweets = numberOfTweets + 20;
+    NSString *fetchCount = [NSString stringWithFormat:@"%d",numberOfTweets];
     NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/statuses/home_timeline.json";
-    NSDictionary *params = @{@"count":@"20"};
+    NSDictionary *params = @{@"count":fetchCount};
     NSError *clientError;
     NSURLRequest *request = [[[Twitter sharedInstance] APIClient]
                              URLRequestWithMethod:@"GET"
@@ -219,25 +222,20 @@
                                        JSONObjectWithData:data
                                        options:0
                                        error:&jsonError];
-                 self.tweetsArray = [[TWTRTweet tweetsWithJSONArray:json] mutableCopy];
-                 NSLog(@"Received %lu tweets",(unsigned long)self.tweetsArray.count);
-                 [self.activityIndicator stopAnimating];
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                  [self.tableView reloadData];
-                 });
+                 [self displayTweets:json];
              }
              else {
                  NSLog(@"Error: %@", connectionError);
-                 [self displayErrorMessage];
                  [self.activityIndicator stopAnimating];
+                 [self.refreshControl endRefreshing];
              }
              
          }];
     }
     else {
         NSLog(@"Error: %@", clientError);
-        [self displayErrorMessage];
         [self.activityIndicator stopAnimating];
+        [self.refreshControl endRefreshing];
     }
 }
 
@@ -246,8 +244,11 @@
     NSString *latitudeString = [[NSNumber numberWithDouble:self.latitude] stringValue];
     NSString *logitudeString = [[NSNumber numberWithDouble:self.longitude] stringValue];
     NSString *geoCodeString = [NSString stringWithFormat:@"%@,%@,1km",latitudeString,logitudeString];
+    int numberOfTweets = [self.tweetsArray count];
+    if(numberOfTweets < 191) numberOfTweets = numberOfTweets + 20;
+    NSString *fetchCount = [NSString stringWithFormat:@"%d",numberOfTweets];
     NSString *searchEndpoint = @"https://api.twitter.com/1.1/search/tweets.json";
-    NSDictionary *params = @{@"geocode":geoCodeString,@"count":@"20"};
+    NSDictionary *params = @{@"geocode":geoCodeString,@"count":fetchCount};
     NSError *clientError;
     NSURLRequest *request = [[[Twitter sharedInstance] APIClient]
                              URLRequestWithMethod:@"GET"
@@ -267,17 +268,12 @@
                                                                  options:0
                                                                    error:&jsonError];
                  NSArray *statuses = [[NSArray alloc] initWithArray:[json objectForKey:@"statuses"]];
-                 self.tweetsArray = [[TWTRTweet tweetsWithJSONArray:statuses] mutableCopy];
-                 NSLog(@"Received %lu tweets",(unsigned long)self.tweetsArray.count);
-                 [self.activityIndicator stopAnimating];
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     [self.tableView reloadData];
-                 });
-             }
+                 [self displayTweets:statuses];
+            }
              else {
                  NSLog(@"Error: %@", connectionError);
                  [self.activityIndicator stopAnimating];
-                 [self displayErrorMessage];
+                 [self.refreshControl endRefreshing];
              }
              
          }];
@@ -285,11 +281,41 @@
     else {
         NSLog(@"Error: %@", clientError);
         [self.activityIndicator stopAnimating];
-        [self displayErrorMessage];
+        [self.refreshControl endRefreshing];
     }
 }
 
+-(void) displayTweets:(NSArray *) arrayOfTweetDict
+{
+    for (TWTRTweet *tweet in [[TWTRTweet tweetsWithJSONArray:arrayOfTweetDict] mutableCopy]) {
+        TWTRTweet *newTweet = tweet;
+        for (TWTRTweet *previousTweet in self.tweetsArray)  {
+            if([previousTweet.tweetID isEqual:newTweet.tweetID]) //tweet is repeated
+                newTweet = nil;
+        }
+        if (newTweet)
+            [self.tweetsArray insertObject:newTweet atIndex:0];
+    }
+  
+    NSLog(@"Containing %lu tweets",(unsigned long)self.tweetsArray.count);
+    [self.activityIndicator stopAnimating];
+    [self.refreshControl endRefreshing];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+
+}
+
 #pragma mark - CLLocationManagerDelegate
+
+-(void)setLocationManager
+{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
+}
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
@@ -317,7 +343,7 @@
     if ([[segue identifier] isEqualToString:@"Show Classify"]) {
         ClassifyTweetViewController *vc = [segue destinationViewController];
         vc.context = self.context;
-        vc.tweetsArray = self.selectedTweets;
+        vc.tweetsArray = [self.selectedTweets mutableCopy];
     }
 }
 
