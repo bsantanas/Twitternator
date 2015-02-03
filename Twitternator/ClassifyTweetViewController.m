@@ -32,6 +32,9 @@ static const CGSize BIG_SQUARE = { 60, 60 };
 static const CGRect TWEET_FRAME = { 100, 100, 100, 50 };
 static const int RADIUS = 50;
 
+
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,6 +44,11 @@ static const int RADIUS = 50;
     [self hangTweet];
     
     [self configureAudioFiles];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    
 }
 
 #pragma mark - Actions
@@ -53,7 +61,7 @@ static const int RADIUS = 50;
         TWTRTweetView *dropView = [[TWTRTweetView alloc] initWithTweet:self.tweetsArray.firstObject];
         //UIView *dropView = [[UIView alloc] initWithFrame:TWEET_FRAME]; //toggle for tests
         dropView.backgroundColor  = [UIColor blueColor];
-        [self.tweetsArray removeObjectAtIndex:0];
+        
         dropView.frame = TWEET_FRAME;
         [self.gameView addSubview:dropView];
         
@@ -61,9 +69,6 @@ static const int RADIUS = 50;
         
         [self.elementBehavior addItem:dropView];
         [self attachTweetToCeiling];
-        
-    }else{
-        self.centralLabel.text = @"Good Job!";
         
     }
 }
@@ -90,7 +95,7 @@ static const int RADIUS = 50;
 
 -(void) detachAndShrinkTweet: (CGPoint) touchPoint
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         CGRect smallFrame = self.hangingTweet.bounds;
         smallFrame.size = TWEET_SMALL;
         self.hangingTweet.bounds = smallFrame;
@@ -98,7 +103,15 @@ static const int RADIUS = 50;
         self.fallingTweet = self.hangingTweet;
         [self attachTweetToPoint:touchPoint];
         [self.animator removeBehavior:self.attachmentToCeiling];
-        [self hangTweet];
+        if([self.tweetsArray count]){
+           [self hangTweet];
+        }else{
+            if(![self.tweetsArray count]){
+                self.centralLabel.text = @"Good Job!";
+                self.centralLabel.textColor = [UIColor whiteColor];
+            }
+
+        }
     }];
     
 }
@@ -132,7 +145,7 @@ static const int RADIUS = 50;
             }
         }completion:^(BOOL finished) {
             [self.fallenTweets makeObjectsPerformSelector:@selector(removeFromSuperview)];
-            self.gameView.backgroundColor = [UIColor whiteColor];
+            self.gameView.backgroundColor = [UIColor colorWithRed:22/255 green:21/255 blue:100/255 alpha:1];
         }];
     }
     

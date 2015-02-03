@@ -34,6 +34,7 @@
         //NSDate *date;// =
         //tweet.createdAt = date;
         tweet.whoTweeted = [Author authorWithName:receivedTweet.author.name inManagedObjectContext:context];
+        NSLog(@"Saving tweet %@",tweet.text);
         
     }
     return tweet;

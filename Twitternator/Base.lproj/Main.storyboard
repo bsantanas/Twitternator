@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bf1-W2-fLB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bf1-W2-fLB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--About-->
@@ -336,6 +336,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwt-Ps-ZPh">
+                                <rect key="frame" x="217" y="282" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KfR-A4-f7t"/>
+                                    <constraint firstAttribute="width" constant="46" id="gPo-bv-h1t"/>
+                                </constraints>
+                                <state key="normal" title="Boom!">
+                                    <color key="titleColor" red="0.84908188868613144" green="0.50940921532846717" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="boomButton:" destination="1is-tQ-SCK" eventType="touchUpInside" id="FQY-pE-M32"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bT7-iE-CsO">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="284"/>
                                 <subviews>
@@ -346,7 +360,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="0iG-o8-3ig"/>
                                             <constraint firstAttribute="width" constant="60" id="Z1r-Oq-rVm"/>
@@ -359,7 +372,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="TC5-Zi-CYY"/>
                                             <constraint firstAttribute="height" constant="60" id="i5Y-Xi-X4y"/>
@@ -376,7 +388,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.086274512112140656" green="0.08235294371843338" blue="0.39215689897537231" alpha="1" colorSpace="deviceRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="eGO-4r-3s1" secondAttribute="trailing" constant="8" id="OHc-GT-Fhz"/>
@@ -390,20 +402,6 @@
                                     <outletCollection property="gestureRecognizers" destination="2mn-yb-wQj" appends="YES" id="slj-Cy-hMk"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwt-Ps-ZPh">
-                                <rect key="frame" x="217" y="282" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="KfR-A4-f7t"/>
-                                    <constraint firstAttribute="width" constant="46" id="gPo-bv-h1t"/>
-                                </constraints>
-                                <state key="normal" title="Boom!">
-                                    <color key="titleColor" red="0.84908188868613144" green="0.50940921532846717" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="boomButton:" destination="1is-tQ-SCK" eventType="touchUpInside" id="FQY-pE-M32"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -484,7 +482,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eQ1-g6-fxv" id="JlI-DE-74z">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc8-5Z-ncf">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search more Tweets!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc8-5Z-ncf">
                                             <rect key="frame" x="8" y="11" width="186" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
@@ -582,11 +580,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="boring" width="204" height="204"/>
-        <image name="cool" width="128" height="128"/>
+        <image name="boring" width="140" height="140"/>
+        <image name="cool" width="88" height="88"/>
         <image name="twitternator" width="702" height="108"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PCZ-tf-1fs"/>
+        <segue reference="RFk-WF-INR"/>
     </inferredMetricsTieBreakers>
 </document>
