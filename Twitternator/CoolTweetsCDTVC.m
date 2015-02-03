@@ -36,7 +36,7 @@
     _context = context;
     
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
-    request.predicate = nil;
+    request.predicate = [NSPredicate predicateWithFormat:@"text != nil"];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"text" ascending:YES selector:@selector(localizedStandardCompare:)]];
     request.fetchLimit = 100;
     

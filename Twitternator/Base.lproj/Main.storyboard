@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bf1-W2-fLB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bf1-W2-fLB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--About-->
@@ -317,6 +317,7 @@
                         <outlet property="activityIndicator" destination="QTz-dg-j7R" id="uww-jl-RlR"/>
                         <outlet property="initialLoginScreen" destination="wNG-c9-2mO" id="e7O-Nf-XU8"/>
                         <outlet property="instructionsLabel" destination="cqc-be-XEm" id="6Zp-eN-CbM"/>
+                        <outlet property="sf" destination="uFz-Wh-bBi" id="B76-Hw-hk9"/>
                         <outlet property="tableView" destination="R8T-47-APX" id="CSm-ye-xKe"/>
                     </connections>
                 </viewController>
@@ -336,20 +337,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwt-Ps-ZPh">
-                                <rect key="frame" x="217" y="282" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="KfR-A4-f7t"/>
-                                    <constraint firstAttribute="width" constant="46" id="gPo-bv-h1t"/>
-                                </constraints>
-                                <state key="normal" title="Boom!">
-                                    <color key="titleColor" red="0.84908188868613144" green="0.50940921532846717" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="boomButton:" destination="1is-tQ-SCK" eventType="touchUpInside" id="FQY-pE-M32"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bT7-iE-CsO">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="284"/>
                                 <subviews>
@@ -388,7 +375,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.086274512112140656" green="0.08235294371843338" blue="0.39215689897537231" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.35999999999999999" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="eGO-4r-3s1" secondAttribute="trailing" constant="8" id="OHc-GT-Fhz"/>
@@ -402,6 +389,20 @@
                                     <outletCollection property="gestureRecognizers" destination="2mn-yb-wQj" appends="YES" id="slj-Cy-hMk"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwt-Ps-ZPh">
+                                <rect key="frame" x="217" y="282" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KfR-A4-f7t"/>
+                                    <constraint firstAttribute="width" constant="46" id="gPo-bv-h1t"/>
+                                </constraints>
+                                <state key="normal" title="Boom!">
+                                    <color key="titleColor" red="0.84908188868613144" green="0.50940921532846717" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="boomButton:" destination="1is-tQ-SCK" eventType="touchUpInside" id="FQY-pE-M32"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

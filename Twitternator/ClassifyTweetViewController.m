@@ -78,8 +78,11 @@ static const int RADIUS = 50;
 {
     CGPoint touchPoint = [sender locationInView:self.gameView];
     if (sender.state == UIGestureRecognizerStateBegan) {
-        if([self distanceBetweet:touchPoint and:self.hangingTweet.center]< RADIUS)
+        if([self distanceBetweet:touchPoint and:self.hangingTweet.center]< RADIUS) //grab a new tweet
+            [self.tweetsArray removeObjectAtIndex:0];
             [self detachAndShrinkTweet:touchPoint];
+        if([self distanceBetweet:touchPoint and:self.fallingTweet.center]< RADIUS) //grab a tweet from the bottom
+            [self attachTweetToPoint:touchPoint];
     } else if (sender.state == UIGestureRecognizerStateChanged) {
         self.grabBehavior.anchorPoint = touchPoint;
     } else if (sender.state == UIGestureRecognizerStateEnded) {
@@ -127,8 +130,6 @@ static const int RADIUS = 50;
         [self.elementBehavior removeItem:self.fallingTweet];
         [self.fallingTweet removeFromSuperview];
         self.fallingTweet = nil;
-        if([self.tweetsArray count])
-            [self.tweetsArray removeObjectAtIndex:0];
     }];
 }
 

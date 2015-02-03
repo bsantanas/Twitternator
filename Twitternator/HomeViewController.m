@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *tweetsArray;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) TWTRTweetTableViewCell *prototypeCell;
+@property (weak, nonatomic) IBOutlet UILabel *errorMessage;
 @property (strong, nonatomic) NSMutableArray *selectedTweets;
 @property (nonatomic) CLLocationDegrees longitude;
 @property (nonatomic) CLLocationDegrees latitude;
@@ -160,6 +161,7 @@
     UILabel *errorMessage = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
     errorMessage.text = @"Sorry, an error occurred! please try again";
     errorMessage.center = self.view.center;
+    [errorMessage sizeToFit];
     [self.view addSubview:errorMessage];
 }
 
@@ -176,6 +178,7 @@
          } else {
              [self.activityIndicator stopAnimating];
              NSLog(@"error: %@", [error localizedDescription]);
+             [self displayErrorMessage];
          }
          
      }];
@@ -192,13 +195,14 @@
          } else {
              [self.activityIndicator stopAnimating];
              NSLog(@"error: %@", [error localizedDescription]);
+             [self displayErrorMessage];
          }
      }];
 }
 
 -(void) fetchUserTweets
 {
-    int numberOfTweets = [self.tweetsArray count];
+    int numberOfTweets = (int)[self.tweetsArray count];
     if(numberOfTweets < 191) numberOfTweets = numberOfTweets + 20;
     NSString *fetchCount = [NSString stringWithFormat:@"%d",numberOfTweets];
     NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/statuses/home_timeline.json";
@@ -228,6 +232,7 @@
                  NSLog(@"Error: %@", connectionError);
                  [self.activityIndicator stopAnimating];
                  [self.refreshControl endRefreshing];
+                 [self displayErrorMessage];
              }
              
          }];
@@ -236,6 +241,7 @@
         NSLog(@"Error: %@", clientError);
         [self.activityIndicator stopAnimating];
         [self.refreshControl endRefreshing];
+        [self displayErrorMessage];
     }
 }
 
@@ -244,7 +250,7 @@
     NSString *latitudeString = [[NSNumber numberWithDouble:self.latitude] stringValue];
     NSString *logitudeString = [[NSNumber numberWithDouble:self.longitude] stringValue];
     NSString *geoCodeString = [NSString stringWithFormat:@"%@,%@,1km",latitudeString,logitudeString];
-    int numberOfTweets = [self.tweetsArray count];
+    int numberOfTweets = (int)[self.tweetsArray count];
     if(numberOfTweets < 191) numberOfTweets = numberOfTweets + 20;
     NSString *fetchCount = [NSString stringWithFormat:@"%d",numberOfTweets];
     NSString *searchEndpoint = @"https://api.twitter.com/1.1/search/tweets.json";
@@ -274,6 +280,7 @@
                  NSLog(@"Error: %@", connectionError);
                  [self.activityIndicator stopAnimating];
                  [self.refreshControl endRefreshing];
+                 [self displayErrorMessage];
              }
              
          }];
@@ -282,6 +289,7 @@
         NSLog(@"Error: %@", clientError);
         [self.activityIndicator stopAnimating];
         [self.refreshControl endRefreshing];
+        [self displayErrorMessage];
     }
 }
 
