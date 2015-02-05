@@ -29,7 +29,7 @@
 
 static const CGSize TWEET_SMALL = { 40, 40 };
 static const CGSize BIG_SQUARE = { 60, 60 };
-static const CGRect TWEET_FRAME = { 100, 100, 100, 50 };
+static const CGRect TWEET_FRAME = { 100, 100, 250, 100 };
 static const int RADIUS = 50;
 
 
@@ -78,10 +78,10 @@ static const int RADIUS = 50;
 {
     CGPoint touchPoint = [sender locationInView:self.gameView];
     if (sender.state == UIGestureRecognizerStateBegan) {
-        if([self distanceBetweet:touchPoint and:self.hangingTweet.center]< RADIUS) //grab a new tweet
+        if([self distanceBetweet:touchPoint and:self.hangingTweet.center]< RADIUS){ //grab a new tweet
             [self.tweetsArray removeObjectAtIndex:0];
-            [self detachAndShrinkTweet:touchPoint];
-        if([self distanceBetweet:touchPoint and:self.fallingTweet.center]< RADIUS) //grab a tweet from the bottom
+            [self detachAndShrinkTweet:touchPoint];}
+        else if([self distanceBetweet:touchPoint and:self.fallingTweet.center]< RADIUS) //grab a tweet from the bottom
             [self attachTweetToPoint:touchPoint];
     } else if (sender.state == UIGestureRecognizerStateChanged) {
         self.grabBehavior.anchorPoint = touchPoint;
@@ -103,8 +103,18 @@ static const int RADIUS = 50;
         smallFrame.size = TWEET_SMALL;
         self.hangingTweet.bounds = smallFrame;
     } completion:^(BOOL finished) {
-        self.fallingTweet = self.hangingTweet;
+        [self.hangingTweet removeFromSuperview];
+        [self.elementBehavior removeItem:self.hangingTweet];
+        UIView *dropView = [[UIView alloc] init];
+        dropView.backgroundColor  = [UIColor whiteColor];
+        CGRect rect = self.hangingTweet.frame;
+        rect.size = TWEET_SMALL;
+        dropView.frame = rect;
+        [self.gameView addSubview:dropView];
+        self.fallingTweet = dropView;
+        [self.elementBehavior addItem:dropView];
         [self attachTweetToPoint:touchPoint];
+        
         [self.animator removeBehavior:self.attachmentToCeiling];
         if([self.tweetsArray count]){
            [self hangTweet];

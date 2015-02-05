@@ -87,12 +87,12 @@
 - (TWTRTweetTableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
     TWTRTweet *tweet = self.tweetsArray[indexPath.row];
     
-    if ([self.selectedTweets containsObject:tweet])
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-    else
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     
     TWTRTweetTableViewCell *cell = (TWTRTweetTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    if ([self.selectedTweets containsObject:tweet])
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    else
+        cell.accessoryType = UITableViewCellAccessoryNone;
     [cell configureWithTweet:tweet];
     [cell setTintColor:[UIColor grayColor]];
     
